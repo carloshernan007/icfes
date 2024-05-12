@@ -12,3 +12,13 @@
 "El Saber 11, popularmente conocido como ICFES, es un examen de egreso de bachillerato administrado anualmente en el grado 11 en el bachillerato colombiano.​"
 
 Priorizaré esta tarea y la completaré tan pronto como tenga el tiempo disponible.
+
+
+## Instalción 
+
+Ejecute los siguientes comandos.
+
+1. php artisan migrate
+2. php artisan db:seed --class=DirectorySeeder
+3. php artisan db:seed --class=SchoolSeeder
+
