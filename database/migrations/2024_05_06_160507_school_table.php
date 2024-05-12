@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -18,7 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->bigInteger('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('registers', function (Blueprint $table) {
@@ -32,13 +34,15 @@ return new class extends Migration
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name', 150);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('courses_schools', function (Blueprint $table) {
@@ -57,14 +61,19 @@ return new class extends Migration
 
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150);
-            $table->timestamps();
+            $table->string('name', 250);
+            $table->integer('level')->default(2);
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('id')->on('categories');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->mediumText('description');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('options', function (Blueprint $table) {
@@ -85,7 +94,8 @@ return new class extends Migration
             $table->foreign('question_id')->references('id')->on('questions');
             $table->foreign('option_id')->references('id')->on('options');
             $table->integer('point')->comment('[Points for evaluation 5 to 1]');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('categories_questions', function (Blueprint $table) {
