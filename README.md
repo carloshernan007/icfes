@@ -14,11 +14,27 @@
 Priorizaré esta tarea y la completaré tan pronto como tenga el tiempo disponible.
 
 
-## Instalción 
+## Instalación
 
-Ejecute los siguientes comandos.
+Ejecutar este comando para instalar los paquetes
 
-1. php artisan migrate
-2. php artisan db:seed --class=DirectorySeeder
-3. php artisan db:seed --class=SchoolSeeder
+`composer install`
+
+Ejecutar 
+
+
+### Configurar 
+
+Reescribir el archivo de la raíz .env.example a .env, luego modificar a su conveniencia, temas como bases de datos
+y servicios SMTP
+
+Una vez establecida la conexión con la base de datos ejecutar los siguientes comandos.
+
+### Preconfiguración
+
+1. `php artisan migrate`
+2. `php artisan db:seed --class=DirectorySeeder`
+3. `php artisan db:seed --class=SchoolSeeder`
+4. `php artisan db:seed --class=PermissionSeeder`
+5. `php artisan db:seed --class=DatabaseSeeder`
 
