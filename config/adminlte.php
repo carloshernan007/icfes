@@ -68,7 +68,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'IFCES',
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'home2',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -294,7 +294,7 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
+        /* Navbar items:
         [
             'type' => 'navbar-search',
             'text' => 'search',
@@ -321,70 +321,56 @@ return [
             'icon' => 'far fa-fw fa-file',
             'label' => 4,
             'label_color' => 'success',
-        ],
+        ],*/
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'text' => 'Usuarios',
+            'url' => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
+            'text' => 'Crear Usuario',
+            'url' => 'admin/users/create',
+            'icon' => 'fas fa-fw  fa-user-plus',
+        ],
+        [
+            'text' => 'Instituciones',
+            'url' => 'admin/course',
+            'icon' => 'fas fa-fw  fa-sitemap',
+        ],
+        [
+            'text' => 'Cursos',
+            'url' => 'admin/course',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'multilevel',
+            'text' => 'Preguntas',
+            'url' => 'admin/course',
+            'icon' => 'fas fa-fw  fa-question-circle',
+        ],
+        [
+            'text' => 'Evaluaciones',
+            'url' => 'admin/course',
+            'icon' => 'fas fa-fw  fa-folder-open',
+        ],
+        [
+            'text' => 'Reportes',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Mejor Curso',
                     'url' => '#',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Evaluaciones',
                     'url' => '#',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Plataforma'],
         [
-            'text' => 'important',
+            'text' => 'Configuraciones',
             'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
             'url' => '#',
         ],
     ],
