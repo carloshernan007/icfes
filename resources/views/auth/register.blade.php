@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label for=""><?=__('users.label-password-confirmation')?></label>
-                <input type="password" name="password_confirmation" class="form-control" placeholder="<?=('user.placeholder-confirmation')?>">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="<?=__('users.placeholder-confirmation')?>">
                 @error('password_confirmation')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
