@@ -38,3 +38,8 @@ Una vez establecida la conexión con la base de datos ejecutar los siguientes co
 4. `php artisan db:seed --class=PermissionSeeder`
 5. `php artisan db:seed --class=DatabaseSeeder`
 
+### Capturas
+
+Registro de estudiantes 
+
+![alt text](https://i.imgur.com/apxEnJ4.png)
