@@ -19,6 +19,12 @@ return [
     'label-school' => 'Escuela',
     'label-region' => 'Región',
     'label-city' => 'Ciudad',
-    'label-course' => 'Curso'
+    'label-group' => 'Grupo',
+    'label-course' => 'Curso',
+    'label-created' => 'Registrado',
+    'button-save' => 'Guardar',
+    'button-back' => 'Regresar',
+    'message-success' => 'Usuario creado correctamente.',
+
 ];
 

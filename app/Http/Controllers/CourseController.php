@@ -16,11 +16,8 @@ class CourseController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => 'El ID de la school debe ser un valor numérico.'], 400);
         }
-
-        $courses =  Course::join('courses_schools', 'courses.id', '=', 'courses_schools.course_id')
-                    ->where('courses_schools.school_id', $school_id)
-                    ->orderBy('name', 'asc')
-                    ->get();
+        $curseEntity = new Course();
+        $courses =  $curseEntity->getCursesBySchool($school_id);
         return response()->json($courses);
     }
 }
