@@ -25,6 +25,7 @@
                     <table class="table table-striped table-valign-middle">
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Usuario</th>
                             <th>Grupo</th>
                             <th>Emails</th>
@@ -37,12 +38,12 @@
                         <tbody>
                         @foreach($users as $user)
                             <tr>
+                                <td>{{$user->user_id}}</td>
                                 <td>
                                     {{trim($user->name)}}<br>
                                     <span class="badge text-bg-primary">Nombre:{{$user->fullname}}</span>
                                 </td>
-                                <td>
-                                    {{\App\Helpers\LabelsHelper::roleLabel($user->role)}}
+                                <td>{{\App\Helpers\LabelsHelper::roleLabel($user->role)}}
                                 </td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->gender}}</td>
@@ -60,11 +61,10 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu" role="menu" style="">
-                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item"
+                                               href="{{route('admin.user.edit',['user_id' => (int)$user->user_id])}}">Editar</a>
                                             <a class="dropdown-item" href="#">Another action</a>
                                             <a class="dropdown-item" href="#">Something else here</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
                                         </div>
                                     </div>
                                 </td>

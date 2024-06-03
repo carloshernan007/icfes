@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/api.php';
 
 
 //Administrator
@@ -58,7 +59,7 @@ Route::prefix('admin')->group(function () {
         ->name('admin.user.save')
         ->middleware('permission:create user');
 
-    Route::post('/users/edit',[UserController::class, 'edit'])
+    Route::get('/users/edit/{user_id}/',[UserController::class, 'edit'])
         ->name('admin.user.edit')
         ->middleware('permission:edit user');
 
@@ -75,7 +76,7 @@ Route::prefix('admin')->group(function () {
         ->middleware('permission:create course');
 
     Route::post('/course/edit',[UserController::class, 'edit'])
-        ->name('admin.user.edit')
+        ->name('admin.course.edit')
         ->middleware('permission:edit source');
 
 });

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Register;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable,HasRoles;
@@ -15,6 +17,14 @@ class User extends Authenticatable
     const   MANAGER = 2;
     const   TEACHER = 3;
     const STUDENT = 4;
+
+    const ROLES =  [
+        self::ADMIN => 'Administrador',
+        self::MANAGER => 'SubAdministrador',
+        self::TEACHER => 'Docente',
+        self::STUDENT => 'estudiantes',
+
+    ];
 
 
     /**
@@ -49,6 +59,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function register()
+    {
+        return $this->hasOne(Register::class);
     }
 
 
