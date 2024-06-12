@@ -29,7 +29,8 @@ class UserController extends Controller
                      'cities.name as city_name',
                      'schools.name as school_name',
                      'users.id as user_id',
-                     'users.role as role'
+                     'users.role as role',
+                     'users.created_at as created'
             )
             ->orderBy('registers.fullname', 'desc')
         ->paginate(20);
@@ -85,8 +86,18 @@ class UserController extends Controller
 
         try {
             DB::beginTransaction();
-            $user = User::find($request->user_id);
-            $user->update($validatedData);
+            if(empty($request->user_id)) {
+                $user = new User();
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => $request->role
+                ]);
+            }else{
+                $user = User::find($request->user_id);
+                $user->update($validatedData);
+            }
             $user->name = $request->name;
             $user->email = $request->email;
             $user->role = $request->role;
@@ -129,5 +140,19 @@ class UserController extends Controller
             return redirect(route('admin.user.edit',$request->user_id));
         }
         return redirect()->route('admin.user', ['absolute' => false])->with('success', __('users.message-success'));
+    }
+
+    public function create()
+    {
+        $roles = User::ROLES;
+        $regions = Region::all();
+        $schools = School::all();
+        return view('admin.form',
+            compact(
+                'roles',
+                'regions',
+                'schools',
+            )
+        );
     }
 }
