@@ -335,7 +335,7 @@ return [
         ],
         [
             'text' => 'Instituciones',
-            'url' => 'admin/course',
+            'url' => 'admin/school',
             'icon' => 'fas fa-fw  fa-sitemap',
         ],
         [

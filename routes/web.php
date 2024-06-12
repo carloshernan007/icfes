@@ -55,13 +55,19 @@ Route::prefix('admin')->group(function () {
         ->name('admin.user.create')
         ->middleware('permission:create user');
 
-    Route::post('/users/save',[UserController::class, 'save'])
-        ->name('admin.user.save')
+    Route::post('/users/store',[UserController::class, 'store'])
+        ->name('admin.user.store')
         ->middleware('permission:create user');
 
     Route::get('/users/edit/{user_id}/',[UserController::class, 'edit'])
         ->name('admin.user.edit')
         ->middleware('permission:edit user');
+
+
+    Route::get('/school',[SchoolController::class, 'index'])
+        ->name('admin.school')
+        ->middleware('permission:list school');
+
 
     Route::get('/course',[CourseController::class, 'index'])
         ->name('admin.course')

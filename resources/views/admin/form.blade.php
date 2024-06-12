@@ -28,7 +28,7 @@
             <div class="col-md-6 col-sm-12 col-6">
 
                 @csrf
-                <input type="hidden" name="user_id" value="{{$user->id}}">
+                <input type="hidden" name="user_id" value="{{$user->id??''}}">
                 <input type="hidden" name="register_id" value="{{$register->id??''}}">
 
                 <div class="card card-primary">
@@ -42,7 +42,7 @@
                             <label for=""><?=__('users.label-user')?></label>
                             <input type="text"
                                    name="name"
-                                   value="{{$user->name}}"
+                                   value="{{$user->name??''}}"
                                    class="form-control"
                                    placeholder="<?=__('users.placeholder-user')?>">
                         </div>
@@ -51,7 +51,7 @@
                             <label for=""><?=__('users.label-email')?></label>
                             <input type="email"
                                    name="email"
-                                   value="{{$user->email}}"
+                                   value="{{$user->email??''}}"
                                    class="form-control"
                                    placeholder="<?=__('users.label-email')?>">
                         </div>
@@ -61,7 +61,7 @@
                                 <option><?= __('users.label-select') ?></option>
                                 @foreach($roles as $key=>$row)
                                     <option value="{{$key}}"
-                                            @if($key === $user->role) selected="selected" @endif>{{$row}}</option>
+                                            @if(isset($user) && $key === $user->role) selected="selected" @endif>{{$row}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -70,7 +70,7 @@
                             <input type="text"
                                    readonly
                                    class="form-control"
-                                   value="{{$user->created_at}}"
+                                   value="{{$user->created_at??''}}"
                             >
                         </div>
                         <div class="form-group">
@@ -114,7 +114,7 @@
                             >
                                 <option><?= __('users.label-select') ?></option>
                                 @foreach($regions as $region)
-                                    <option value="{{$region->id}}" @if($region->id == $regionId) selected @endif>
+                                    <option value="{{$region->id}}" @if(isset($regionId) && $region->id == $regionId) selected @endif>
                                         {{$region->name}}
                                     </option>
                                 @endforeach
@@ -124,11 +124,13 @@
                             <label for=""><?= __('users.label-city') ?></label>
                             <select class="form-control" id="city_id" name="city_id" required>
                                 <option><?= __('users.label-select') ?></option>
-                                @foreach($cities as $city)
-                                    <option value="{{$city->id}}" @if($city->id == $register->city_id) selected @endif>
-                                        {{$city->name}}
-                                    </option>
-                                @endforeach
+                                @if(isset($cities))
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->id}}" @if($city->id == $register->city_id) selected @endif>
+                                            {{$city->name}}
+                                        </option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
@@ -145,10 +147,10 @@
                             <label for=""><?= __('users.label-gender') ?></label>
                             <select class="form-control" id="gender" name="gender" required>
                                 <option><?= __('users.label-select') ?></option>
-                                <option value="H" @if($register && 'H' == $register->gender) selected @endif>
+                                <option value="H" @if(isset($register) && 'H' == $register->gender) selected @endif>
                                     <?= __('users.label-man') ?>
                                 </option>
-                                <option value="M" @if($register &&  'M' == $register->gender) selected @endif>
+                                <option value="M" @if(isset($register) &&  'M' == $register->gender) selected @endif>
                                     <?= __('users.label-male') ?>
                                 </option>
                             </select>
@@ -165,7 +167,7 @@
                                 <option><?= __('users.label-select') ?></option>
                                 @foreach($schools as $school)
                                     <option value="{{$school->id}}"
-                                            @if($register && $school->id == $register->school_id) selected @endif>
+                                            @if(isset($register) && $school->id == $register->school_id) selected @endif>
                                         {{$school->name}}
                                     </option>
                                 @endforeach
@@ -176,12 +178,14 @@
                             <label for=""><?= __('users.label-course') ?></label>
                             <select class="form-control" id="course_id" name="courses[]" multiple>
                                 <option><?= __('users.label-select') ?></option>
-                                @foreach($courses as $course)
-                                    <option value="{{$course->id}}"
-                                            @if(in_array($course->id,$courseActive)) selected @endif>
-                                        {{$course->name}}
-                                    </option>
-                                @endforeach
+                                @if(isset($courses))
+                                    @foreach($courses as $course)
+                                        <option value="{{$course->id}}"
+                                                @if( in_array($course->id,$courseActive)) selected @endif>
+                                            {{$course->name}}
+                                        </option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
 

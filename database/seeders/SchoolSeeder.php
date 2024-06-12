@@ -89,7 +89,8 @@ class SchoolSeeder extends Seeder
             'name' => 'Colegio Parroquial Señor de los Milagros',
             'address' => 'Avenida siempre viva',
             'description' => 'Colegio de pruebas',
-            'city_id' => 1
+            'city_id' => 1,
+            'user_id' => 1
         ]);
         //Add curses to school
         $rows = DB::table('courses')->select(['id'])->get();
