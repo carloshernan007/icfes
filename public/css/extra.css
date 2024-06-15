@@ -1,3 +1,7 @@
 .product-description{
     display: block;
 }
+.alert-custom{
+    margin: 15px auto;
+    max-width: 99%;
+}

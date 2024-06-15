@@ -68,6 +68,19 @@ Route::prefix('admin')->group(function () {
         ->name('admin.school')
         ->middleware('permission:list school');
 
+    Route::get('/school/create',[SchoolController::class, 'create'])
+        ->name('admin.school.create')
+        ->middleware('permission:create school');
+
+    Route::post('/school/create',[SchoolController::class, 'create'])
+        ->name('admin.school.create')
+        ->middleware('permission:create school');
+
+    Route::get('/school/edit/{school_id}/',[SchoolController::class, 'edit'])
+        ->name('admin.school.edit')
+        ->middleware('permission:edit school');
+
+
 
     Route::get('/course',[CourseController::class, 'index'])
         ->name('admin.course')

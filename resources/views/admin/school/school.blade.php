@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('vendor.adminlte.page')
 
 @section('title', __('school.schools'))
 
@@ -10,13 +10,17 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-12">
             <div class="card">
+
+
+
+
                 <div class="card-header border-0">
                     <h3 class="card-title"><?=__('school.school')?></h3>
                     <div class="card-tools">
                         <a href="#" class="btn btn-tool btn-sm">
                             <i class="fas fa-download"></i>
                         </a>
-                        <a href="{{route('admin.user.create')}}"
+                        <a href="{{route('admin.school.create')}}"
                            class="btn btn-tool btn-sm"
                            data-toggle="tooltip"
                            data-placement="top"
@@ -39,6 +43,7 @@
                         </thead>
                         <tbody>
                             @foreach($rows as $row)
+                              <tr>
                                 <td>{{$row->id}}</td>
                                 <td>
                                     {{$row->school_name}}
@@ -57,12 +62,13 @@
                                         </button>
                                         <div class="dropdown-menu" role="menu" style="">
                                             <a class="dropdown-item"
-                                               href="{{route('admin.user.edit',['user_id' => (int)$row->school_id])}}">
+                                               href="{{route('admin.school.edit',['school_id' => (int)$row->school_id])}}">
                                                     <?=__('users.label-edit')?>
                                             </a>
                                         </div>
                                     </div>
                                 </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
