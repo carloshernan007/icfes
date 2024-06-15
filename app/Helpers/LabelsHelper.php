@@ -17,6 +17,19 @@ class LabelsHelper
         }catch (\Exception $exception){
             return '';
         }
+    }
 
+    public static function getIconNotification($id):string
+    {
+        try {
+            $rows =  [
+                'success' => 'fa-check',
+                'danger' => 'fa-ban',
+                'warning' => 'fa-warning',
+            ];
+            return $rows[$id];
+        }catch (\Exception $exception){
+            return '';
+        }
     }
 }
