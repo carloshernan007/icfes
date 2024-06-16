@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use \App\Models\Register;
 
 class School extends Model
 {
@@ -17,6 +18,18 @@ class School extends Model
         'description',
         'user_id'
     ];
+
+
+    public function registers()
+    {
+        return $this->hasMany(Register::class);
+    }
+
+
+    public function hasRelatedRegisters()
+    {
+        return $this->registers()->exists();
+    }
 
 
 }

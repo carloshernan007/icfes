@@ -86,6 +86,26 @@
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
         <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        @php( $message = \App\Helpers\AlertHelper::existNotification())
+        @php( $icon = \App\Helpers\LabelsHelper::getIconNotification($message))
+
+        <script>
+            $(function() {
+                let message = "<?=$message?>";
+                console.log(message);
+                if(message != ''){
+                    Swal.fire({
+                        title: "<?=__('general.title')?>",
+                        text: "{{session($message)}}",
+                        icon: "{{$icon}}"
+                    });
+                }
+            });
+        </script>
+
+
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif

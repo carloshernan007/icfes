@@ -65,6 +65,12 @@
                                                href="{{route('admin.school.edit',['school_id' => (int)$row->school_id])}}">
                                                     <?=__('users.label-edit')?>
                                             </a>
+                                            <a class="dropdown-item js-confirm"
+                                               data-title="{{__('school.message-warning-delete')}}"
+                                               data-text="{{__('school.message-message-delete',['instituto' => $row->school_name])}}"
+                                               href="{{route('admin.school.delete',['school_id' => (int)$row->school_id])}}">
+                                                    <?=__('users.label-delete')?>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -85,7 +91,7 @@
  @stop
 
 @section('js')
-
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()

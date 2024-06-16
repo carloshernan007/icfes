@@ -23,9 +23,10 @@ class LabelsHelper
     {
         try {
             $rows =  [
-                'success' => 'fa-check',
-                'danger' => 'fa-ban',
-                'warning' => 'fa-warning',
+                'success' => 'success',
+                'danger' => 'error',
+                'warning' => 'warning',
+                'info' => 'info',
             ];
             return $rows[$id];
         }catch (\Exception $exception){

@@ -80,6 +80,9 @@ Route::prefix('admin')->group(function () {
         ->name('admin.school.edit')
         ->middleware('permission:edit school');
 
+    Route::get('/school/delete/{school_id}/',[SchoolController::class, 'remove'])
+        ->name('admin.school.delete')
+        ->middleware('permission:delete school');
 
 
     Route::get('/course',[CourseController::class, 'index'])

@@ -87,7 +87,6 @@ class UserController extends Controller
         try {
             DB::beginTransaction();
             if(empty($request->user_id)) {
-                $user = new User();
                 $user = User::create([
                     'name' => $request->name,
                     'email' => $request->email,

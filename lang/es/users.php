@@ -24,6 +24,7 @@ return [
     'label-course' => 'Curso',
     'label-created' => 'Registrado',
     'label-edit' => 'Editar',
+    'label-delete' => 'Eliminar registro',
     'label-report' => 'Ver reporte',
     'title-user' => 'Nuevo usuario',
     'title-list-user' => 'Usuarios',
