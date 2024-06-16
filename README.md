@@ -1,45 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Simulador ICFES
 
-## Simulador IFCES
+El examen Saber 11, conocido comúnmente como ICFES, es una evaluación de egreso de bachillerato administrada anualmente para los estudiantes de grado 11 en Colombia.
 
-"El Saber 11, popularmente conocido como ICFES, es un examen de egreso de bachillerato administrado anualmente en el grado 11 en el bachillerato colombiano.​"
+## Funcionalidades
 
-Priorizaré esta tarea y la completaré tan pronto como tenga el tiempo disponible.
-
+- Creación de docentes, administradores y estudiantes.
+- Creación de institutos.
+- Creación de cursos.
+- Categorización.
+- Generación de exámenes.
+- Generación de reportes.
 
 ## Instalación
 
-Ejecutar este comando para instalar los paquetes
+Para instalar los paquetes necesarios, ejecute el siguiente comando:
 
-`composer install`
+```bash
+composer install
+```
 
-Ejecutar 
+## Configuración
 
+Renombre el archivo `.env.example` en la raíz del proyecto a `.env` y modifique las configuraciones según sus necesidades, incluyendo las bases de datos y los servicios SMTP.
 
-### Configurar 
+Una vez establecida la conexión con la base de datos, ejecute los siguientes comandos para la preconfiguración:
 
-Reescribir el archivo de la raíz .env.example a .env, luego modificar a su conveniencia, temas como bases de datos
-y servicios SMTP
+```bash
+php artisan migrate
+php artisan db:seed --class=DirectorySeeder
+php artisan db:seed --class=SchoolSeeder
+php artisan db:seed --class=PermissionSeeder
+php artisan db:seed --class=DatabaseSeeder
+```
 
-Una vez establecida la conexión con la base de datos ejecutar los siguientes comandos.
+## Cuentas de Usuario
 
-### Preconfiguración
+| Email               | Contraseña | Perfil   |
+|---------------------|------------|----------|
+| manager@example.com | admin      | Manager  |
+| carlosa@example.com | admin      | Admin    |
+| teacher@example.com | teacher    | Teacher  |
+| student@example.com | student    | Student  |
 
-1. `php artisan migrate`
-2. `php artisan db:seed --class=DirectorySeeder`
-3. `php artisan db:seed --class=SchoolSeeder`
-4. `php artisan db:seed --class=PermissionSeeder`
-5. `php artisan db:seed --class=DatabaseSeeder`
+## Ventajas de Utilizar Esta Aplicación
 
-### Capturas
+- **Preparación Efectiva:** Esta aplicación permite a los estudiantes prepararse de manera más efectiva para el examen Saber 11, proporcionando exámenes simulados que reflejan el formato y el contenido del examen real.
+- **Identificación de Falencias:** Los docentes pueden identificar las áreas de debilidad de los estudiantes y agrupar a aquellos con falencias similares para enfocarse en una preparación más dirigida y efectiva.
+- **Generación de Reportes:** La aplicación genera reportes detallados que ayudan a los estudiantes a entender sus áreas de mejora y a los docentes a planificar sus clases en consecuencia.
+- **Administración Centralizada:** La capacidad de crear y gestionar usuarios (docentes, administradores y estudiantes) y cursos en una sola plataforma facilita la administración y el seguimiento del progreso académico.
 
-Registro de estudiantes 
+## Capturas de Pantalla
 
-![alt text](https://i.imgur.com/apxEnJ4.png)
+Registro de estudiantes:
+![Registro de estudiantes](https://i.imgur.com/apxEnJ4.png)
+
+Lista de instituciones:
+![Lista de instituciones](https://i.imgur.com/yTqNCtB.png)
+
+Lista de usuarios:
+![Lista de usuarios](https://i.imgur.com/wUJ9Ovr.png)
