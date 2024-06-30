@@ -345,12 +345,17 @@ return [
         ],
         [
             'text' => 'Preguntas',
-            'url' => 'admin/course',
+            'url' => 'admin/question',
             'icon' => 'fas fa-fw  fa-question-circle',
         ],
         [
             'text' => 'Evaluaciones',
-            'url' => 'admin/course',
+            'url' => 'admin/evaluation',
+            'icon' => 'fas fa-fw  fa-folder-open',
+        ],
+        [
+            'text' => 'Categorias',
+            'url' => 'admin/category',
             'icon' => 'fas fa-fw  fa-folder-open',
         ],
         [

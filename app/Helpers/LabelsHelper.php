@@ -33,4 +33,21 @@ class LabelsHelper
             return '';
         }
     }
+
+    public static function getGetLevelColor($level)
+    {
+        $data  = [
+            1 => '#28a745',
+            2 => '#17a2b8',
+            3 => '#007bff',
+            4 => '#dc3545',
+            5 => '#28a745',
+            6 => '#dc3545',
+            7 => '#28a745',
+            8 => '#dc3545',
+            9 => '#28a745',
+            10 => '#dc3545',
+        ];
+        return $data[$level];
+    }
 }

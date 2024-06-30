@@ -5,3 +5,23 @@
     margin: 15px auto;
     max-width: 99%;
 }
+.submmenu-link a{
+    margin: 0px 5px;
+}
+
+.submmenu-link a:hover{
+    color: #28a745;
+}
+
+.hidden{
+    display: none;
+}
+
+.btn-question-plus{
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 30px;
+    cursor: pointer;
+    margin-top: 25%;
+}
