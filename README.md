@@ -9,8 +9,10 @@ El examen Saber 11, conocido comúnmente como ICFES, es una evaluación de egres
 - Creación de institutos.
 - Creación de cursos.
 - Categorización.
-- Generación de exámenes.
-- Generación de reportes.
+- Generación Preguntas.
+- Generación de exámenes (Pendiente).
+- Generación de reportes (pendiente).
+- Administración de configuraciones (Pendiente).
 
 ## Instalación
 
