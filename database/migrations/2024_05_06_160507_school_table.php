@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->text('description')->nullable();
             $table->bigInteger('city_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
